@@ -5140,7 +5140,13 @@ install_windows() {
 
     apk add wimlib
 
-    download $iso /os/windows.iso
+    # download $iso /os/windows.iso
+    apk add ntfs-3g
+    mkdir /mnt/vdb1
+    mount -t ntfs -o ro /dev/vdb1 /mnt/vdb1
+    mkdir -p /os
+    cp /mnt/vdb1/zh-cn_windows_11_enterprise_ltsc_2024_x64_dvd_cff9cd2d.iso /os/windows.iso
+
     mkdir -p /iso
     mount -o ro /os/windows.iso /iso
 
